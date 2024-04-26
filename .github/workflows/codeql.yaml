@@ -18,7 +18,7 @@ jobs:
       uses: actions/checkout@v2
 
     - name: Initialize CodeQL
-      uses: github/codeql-action/init@v2.17.1
+      uses: github/codeql-action/init@v2
       with:
         languages: "csharp" # change this to the languages you want to scan
 
@@ -29,4 +29,4 @@ jobs:
         dotnet build --no-restore # replace this with the command to build your project
 
     - name: Perform CodeQL Analysis
-      uses: github/codeql-action/analyze@v2.17.1
+      uses: github/codeql-action/analyze@v2
