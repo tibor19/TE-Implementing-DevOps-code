@@ -23,7 +23,7 @@ jobs:
         languages: "csharp" # change this to the languages you want to scan
 
     - name: Build
-      chdir: ${{ github.workspace }}/Application/src/RazorPagesTestSample
+      working-directory: ./Application/src/RazorPagesTestSample
       run: |
         dotnet restore # replace this with the command to build your project
         dotnet build --no-restore # replace this with the command to build your project
