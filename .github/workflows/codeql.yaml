@@ -1,0 +1,32 @@
+name: "Code Scanning - Action"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+  schedule:
+    - cron: '0 0 * * 0'
+
+jobs:
+  CodeQL-Build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Initialize CodeQL
+      uses: github/codeql-action/init@v2.17.1
+      with:
+        languages: "csharp" # change this to the languages you want to scan
+
+    - name: Build
+      chdir: ${{ github.workspace }}/Application/src/RazorPagesTestSample
+      run: |
+        dotnet restore # replace this with the command to build your project
+        dotnet build --no-restore # replace this with the command to build your project
+
+    - name: Perform CodeQL Analysis
+      uses: github/codeql-action/analyze@v2.17.1
